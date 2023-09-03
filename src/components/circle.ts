@@ -13,9 +13,18 @@ export class Circle {
 
   draw(c: CanvasRenderingContext2D) {
     c.beginPath();
-    c.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+    c.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
     c.fillStyle = this.color || 'White';
     c.fill();
     c.closePath();
   }
-}; 
+
+  move(dx: number, dy: number) {
+    this.x += dx;
+    this.y += dy;
+  }
+
+  randomColor(colorPallete: string[]) {
+    this.color = colorPallete[Math.floor(Math.random() * colorPallete.length)];
+  }
+};
